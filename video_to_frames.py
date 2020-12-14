@@ -14,9 +14,9 @@ print(f'Duration (sec): {duration}')
 count = 0
 
 # Number of frames per second to convert to image
-image_per_fps = 2
+image_per_fps = 7
 
-frames_skip = round(frames_per_second)/image_per_fps
+frames_skip = round(frames_per_second/image_per_fps)
 print(f'Will skip {frames_skip} frames per second for conversion')
 
 
@@ -31,5 +31,7 @@ while count <= num_frames:
     count += 1
 
 
+
+# %%
 
 # %%
