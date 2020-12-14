@@ -14,10 +14,10 @@ print(f'Duration (sec): {duration}')
 count = 0
 
 # Number of frames per second to convert to image
-image_per_fps = 7
+image_per_sec = 7
 
-frames_skip = round(frames_per_second/image_per_fps)
-print(f'Will skip {frames_skip} frames per second for conversion')
+frames_skip = round(frames_per_second/image_per_sec)
+print(f'Will skip every {frames_skip} frames for conversion')
 
 
 #%% Save frames from Video
@@ -29,9 +29,5 @@ while count <= num_frames:
         cv2.imwrite(f'../datasets/ornaments/frame{count}.jpg', image)      
         print(f'saving frame {count}')
     count += 1
-
-
-
-# %%
 
 # %%
