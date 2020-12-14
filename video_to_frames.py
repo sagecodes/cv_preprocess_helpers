@@ -5,20 +5,25 @@ import cv2
 video = cv2.VideoCapture('../datasets/videos/ornamentvideo.mov')
 frames_per_second = video.get(cv2.CAP_PROP_FPS)
 num_frames = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
+duration = num_frames/frames_per_second
 
 print(f'Video FPS: {frames_per_second}')
 print(f'Total Frames {num_frames}')
-print(f'Duration (sec): {num_frames/frames_per_second}')
+print(f'Duration (sec): {duration}')
 
 count = 0
 
-#frames to skip
-frames_skip = 4
+# Number of frames per second to convert to image
+image_per_fps = 2
+
+frames_skip = round(frames_per_second)/image_per_fps
+print(f'Will skip {frames_skip} frames per second for conversion')
+
 
 #%% Save frames from Video
 
 while count <= num_frames:
-    success,image = video.read()
+    success, image = video.read()
 
     if count % frames_skip == 0:
         cv2.imwrite(f'../datasets/ornaments/frame{count}.jpg', image)      
@@ -26,3 +31,5 @@ while count <= num_frames:
     count += 1
 
 
+
+# %%
