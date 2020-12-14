@@ -1,19 +1,30 @@
-# Command example: python resize.py -d /geese_small_val -s 800 600
+#%% Command example: python resize.py -d /geese_small_val -s 800 600
 from PIL import Image
 import os
 import argparse
 
+#%%
+def rescale_images(directory, output_folder, size):
 
-def rescale_images(directory, size):
     for img in os.listdir(directory):
+        if os.path.isdir(directory+img):
+            continue
         im = Image.open(directory+img)
         im_resized = im.resize(size, Image.ANTIALIAS)
-        im_resized.save(directory+img)
+        im_resized.save(output_folder+img)
 
+        width, height = im.size
+        print(width)
+        print(height)
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Rescale images")
-    parser.add_argument('-d', '--directory', type=str, required=True, help='Directory containing the images')
-    parser.add_argument('-s', '--size', type=int, nargs=2, required=True, metavar=('width', 'height'), help='Image size')
-    args = parser.parse_args()
-    rescale_images(args.directory, args.size)
+#%%
+
+input_img_folder = '../datasets/ornaments/'
+
+os.makedirs(input_img_folder+"/resized/", exist_ok=True)
+
+output_folder = input_img_folder+'resized/'
+#%%
+rescale_images(input_img_folder, output_folder, (200,200))
+
+# %%
