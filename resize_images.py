@@ -19,12 +19,12 @@ def rescale_images(directory, output_folder, size):
 
 #%%
 
-input_img_folder = '../datasets/ornaments/'
+input_img_folder = '../datasets/signs_resize/'
 
 os.makedirs(input_img_folder+"/resized/", exist_ok=True)
 
 output_folder = input_img_folder+'resized/'
 #%%
-rescale_images(input_img_folder, output_folder, (200,200))
+rescale_images(input_img_folder, output_folder, (800,600))
 
 # %%
